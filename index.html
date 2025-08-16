@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Machine Learning Engineer — Portfolio</title>
+<meta name="description" content="Technical portfolio of a Machine Learning Engineer — case studies, datasets, methodology, results and impact." />
+<style>
+  :root{
+    --bg:#0f1724;
+    --card:#0b1220;
+    --muted:#9aa6b2;
+    --accent:#38bdf8;
+    --accent-2:#60a5fa;
+    --glass: rgba(255,255,255,0.03);
+    --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    background: linear-gradient(180deg,#071025 0%, var(--bg) 70%);
+    color:#e6eef6;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.45;
+    padding:32px;
+  }
+
+  .container{max-width:1100px;margin:0 auto}
+
+  header{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:16px;margin-bottom:28px;
+  }
+  .brand{
+    display:flex;gap:12px;align-items:center;text-decoration:none;color:inherit;
+  }
+  .logo{
+    width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    display:grid;place-items:center;font-weight:700;color:#012031;font-family:var(--mono);
+    box-shadow: 0 6px 20px rgba(3,10,18,0.6);
+  }
+  nav{display:flex;gap:14px;flex-wrap:wrap}
+  nav a{
+    color:var(--muted);text-decoration:none;font-size:0.95rem;padding:8px 10px;border-radius:8px;
+  }
+  nav a:hover{color:var(--accent);background:var(--glass)}
+
+  /* HERO */
+  .hero{
+    display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start;margin-bottom:36px;
+  }
+  .intro{
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+    border-radius:12px;padding:28px;
+    box-shadow: 0 8px 40px rgba(2,6,12,0.6);
+  }
+  .intro h1{margin:0 0 6px;font-size:1.7rem;letter-spacing:-0.4px}
+  .intro p.lead{color:var(--muted);margin:0 0 18px}
+  .highlight-card{
+    border-radius:10px;padding:16px;background:linear-gradient(180deg, rgba(255,255,255,0.018), rgba(0,0,0,0.12));
+    border:1px solid rgba(255,255,255,0.03);
+  }
+  .project-meta{display:flex;gap:10px;align-items:center;font-size:0.9rem;color:var(--muted)}
+  .cta{
+    display:inline-block;margin-top:16px;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));
+    color:#03202b;font-weight:600;text-decoration:none;
+  }
+
+  /* sections */
+  section{margin-bottom:34px}
+  h2{font-size:1.05rem;margin:0 0 12px}
+  .split{display:grid;grid-template-columns:1fr 360px;gap:22px}
+
+  /* case studies list */
+  .case-list{display:flex;flex-direction:column;gap:12px}
+  .case{
+    padding:14px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent);
+    border:1px solid rgba(255,255,255,0.025);
+  }
+  .case h3{margin:0 0 6px;font-size:1rem}
+  .case p{margin:0;color:var(--muted);font-size:0.93rem}
+  .meta-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;font-size:0.86rem;color:var(--muted)}
+
+  /* using details for full case */
+  details{
+    margin-top:12px;padding:14px;border-radius:8px;background:rgba(255,255,255,0.02);
+    border:1px solid rgba(255,255,255,0.02)
+  }
+  details summary{cursor:pointer;outline:none;font-weight:600}
+  .case-grid{display:grid;grid-template-columns:1fr 240px;gap:16px;margin-top:12px}
+  .panel{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.02)}
+  .mono{font-family:var(--mono);font-size:0.9rem;color:#d6eefc;background:rgba(0,0,0,0.12);padding:8px;border-radius:6px;overflow:auto}
+
+  /* timeline */
+  .timeline{position:relative;padding-left:18px;border-left:2px dashed rgba(255,255,255,0.04)}
+  .event{margin-bottom:18px;padding-left:12px}
+  .event .title{font-weight:600}
+  .event .meta{color:var(--muted);font-size:0.9rem}
+
+  /* skills grid */
+  .skills{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .skill-cat{padding:12px;border-radius:8px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.02)}
+  .skill-cat ul{margin:8px 0 0;padding-left:18px;color:var(--muted)}
+
+  /* publications */
+  .pubs li{margin-bottom:8px;color:var(--muted)}
+
+  /* contact */
+  .contact{display:flex;flex-direction:column;gap:8px}
+  .links{display:flex;gap:8px}
+  .chip{background:rgba(255,255,255,0.02);padding:8px 10px;border-radius:8px;color:var(--muted);text-decoration:none;font-size:0.95rem}
+
+  /* small screens */
+  @media (max-width:920px){
+    .hero,.split{grid-template-columns:1fr;align-items:stretch}
+    nav{display:none}
+    body{padding:18px}
+  }
+
+  /* small visual sparkline */
+  .sparkline{width:100%;height:48px}
+  .metric{display:flex;gap:10px;align-items:center}
+  .metric .big{font-size:1.3rem;font-weight:700}
+  .kpi{font-size:0.85rem;color:var(--muted)}
+</style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a class="brand" href="#top">
+        <div class="logo">ML</div>
+        <div>
+          <div style="font-weight:700">Nif Rebel — ML/AI Engineer</div>
+          <div style="font-size:0.82rem;color:var(--muted)">Computer Vision • Predictive Modeling • Production ML</div>
+        </div>
+      </a>
+      <nav aria-label="Primary">
+        <a href="#work">Work</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#pubs">Publications</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <!-- HERO / Featured project -->
+<section class="hero" id="top" aria-labelledby="hero-heading">
+  <!-- Profile + Intro -->
+  <div class="intro" style="display:flex;gap:22px;align-items:flex-start">
+    <!-- Profile picture -->
+    <div style="flex-shrink:0">
+      <img src="pic.jpg" alt="Profile picture" 
+           style="width:140px;height:140px;border-radius:50%;
+                  object-fit:cover;border:3px solid var(--accent);
+                  box-shadow:0 6px 20px rgba(0,0,0,0.5)">
+    </div>
+
+    <!-- Text intro -->
+    <div>
+      <h1 id="hero-heading">Machine Learning Engineer specializing in computer vision & applied research</h1>
+      <p class="lead">I solve messy, high-stakes problems with production-ready machine learning — from data acquisition and feature engineering to model architecture, rigorous evaluation, and deployment. Below: a featured case study demonstrating full lifecycle impact.</p>
+
+      <div class="highlight-card">
+        <div style="display:flex;justify-content:space-between;align-items:start;gap:12px">
+          <div>
+            <div class="project-meta">
+              <strong>Featured project</strong>
+              <span>•</span>
+              <span>Real-time invoice OCR for 200k monthly docs</span>
+            </div>
+            <h3 style="margin:8px 0 6px">Robust Invoice Extraction — Production OCR + Table Parsing</h3>
+            <p style="margin:0;color:var(--muted)">Reduced manual processing time by 87% using a hybrid CNN+Transformer pipeline and careful data augmentation. See metrics, architecture, and reproducible steps below.</p>
+          </div>
+          <div style="text-align:right">
+            <div class="metric" style="justify-content:flex-end">
+              <div class="big">+87%</div>
+              <div class="kpi">reduction in manual effort</div>
+            </div>
+            <a class="cta" href="#case-invoice">Read case study</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Side panel -->
+  <aside>
+    <div class="panel" style="display:flex;flex-direction:column;gap:12px">
+      <div style="font-weight:700">Contact</div>
+      <div style="color:var(--muted)">nif.rebel@gmail.com</div>
+      <div style="font-weight:700;margin-top:8px">Top skills</div>
+      <div style="color:var(--muted)">Computer Vision · Deep Learning · Model Deployment</div>
+      <div style="margin-top:8px">
+        <a class="chip" href="#skills">See full skills →</a>
+      </div>
+    </div>
+  </aside>
+</section>
+
+    <!-- CASE STUDIES -->
+    <section id="work">
+      <h2>Case Studies — Technical writeups</h2>
+      <div class="split">
+        <div class="case-list">
+          <!-- Invoice case -->
+          <article class="case" id="case-invoice">
+            <h3>Invoice OCR & Table Parsing (Production)</h3>
+            <p>Problem: Automate invoice processing across heterogeneous vendors with noisy scans and multiple languages.</p>
+            <div class="meta-row">
+              <span>Data: 200k scanned docs • mixed languages</span>
+              <span>•</span>
+              <span>Stack: PyTorch, Detectron2, Transformers, Tesseract, Docker, AWS</span>
+            </div>
+
+            <details>
+              <summary>Open full case study — Problem, Data, Methodology, Results, Impact, Code</summary>
+              <div class="case-grid">
+                <div>
+                  <section class="panel">
+                    <h4 style="margin-top:0">1. The Problem</h4>
+                    <p class="mono" style="padding:10px">High-volume invoice intake required robust extraction of fields and table elements to feed accounting systems. Failure modes: rotated scans, multi-column layouts, handwritten annotations.</p>
+
+                    <h4>2. The Data</h4>
+                    <ul style="margin:6px 0 0;color:var(--muted)">
+                      <li>Source: client document pipeline + synthetic generation (30% synthetic)</li>
+                      <li>Size: 200,000 images. Training/val split: 160k/20k</li>
+                      <li>Preprocessing: deskew, contrast normalization, OCR token alignment, bounding-box standardization</li>
+                      <li>Feature engineering: region-proposals + token positional encodings for table parsing</li>
+                    </ul>
+
+                    <h4>3. Methodology</h4>
+                    <p style="margin:6px 0;color:var(--muted)">Approach: two-stage pipeline</p>
+                    <ol style="margin:6px 0 0;color:var(--muted)">
+                      <li>Layout detection: Detectron2 Faster R-CNN baseline → fine-tuned with focal loss for imbalanced boxes.</li>
+                      <li>Table parsing: Transformer-based relation classifier on tokens extracted by OCR; multi-task loss for cell segmentation + cell relation prediction.</li>
+                      <li>Postprocessing: rule-based normalization and confidence calibration (Platt scaling).</li>
+                    </ol>
+
+                    <h4>4. Results & Evaluation</h4>
+                    <div style="display:flex;gap:12px;align-items:center">
+                      <div style="flex:1">
+                        <div style="margin-bottom:8px">
+                          <strong>Key metrics (test):</strong>
+                        </div>
+                        <ul style="color:var(--muted);margin:0">
+                          <li>Field extraction F1: <strong>0.93</strong></li>
+                          <li>Table cell IoU: <strong>0.89</strong></li>
+                          <li>End-to-end accuracy (key fields): <strong>0.91</strong></li>
+                          <li>Throughput: 12 pages/sec per GPU (batching)</li>
+                        </ul>
+                      </div>
+                      <div style="width:160px">
+                        <!-- simple sparkline SVG to indicate improvement -->
+                        <svg viewBox="0 0 100 40" class="sparkline" aria-hidden>
+                          <polyline fill="none" stroke="#38bdf8" stroke-width="2" points="0,30 12,22 24,18 36,14 48,10 60,12 72,8 84,6 96,4"/>
+                        </svg>
+                      </div>
+                    </div>
+
+                    <h4>5. Impact</h4>
+                    <p style="color:var(--muted);margin:6px 0">Automated processing reduced manual efforts by 87%, cut invoice processing time from avg 36 hours to <6 hours, and reduced error-rate in GL posting by 4 percentage points.</p>
+
+                    <h4>6. Code & Repro</h4>
+                    <p style="color:var(--muted);margin:6px 0">Repository (anonymized): <a href="https://github.com/yourname/invoice-ocr" style="color:var(--accent)" target="_blank" rel="noopener">github.com/yourname/invoice-ocr</a></p>
+
+                    <pre class="mono" style="margin-top:8px"># training snippet (PyTorch)
+model = InvoiceParser(...)
+optimizer = torch.optim.AdamW(model.parameters(), lr=3e-5)
+for epoch in range(epochs):
+    for batch in loader:
+        loss = model(batch)
+        loss.backward(); optimizer.step(); optimizer.zero_grad()
+                    </pre>
+                  </section>
+                </div>
+
+                <aside>
+                  <div class="panel">
+                    <h4 style="margin-top:0">Architecture (summary)</h4>
+                    <ul style="color:var(--muted);margin:0">
+                      <li>Detectron2 Faster R-CNN → box proposals</li>
+                      <li>ResNet50 backbone, FPN</li>
+                      <li>Transformer relation head (6 layers, 8 heads)</li>
+                      <li>Loss: CE + IoU + relation-binary cross-entropy</li>
+                    </ul>
+
+                    <h4 style="margin-top:12px">Hyperparams</h4>
+                    <div class="mono">
+                      lr=3e-5 · batch=8 · weight_decay=0.01 · warmup=500 · epochs=18
+                    </div>
+
+                    <h4 style="margin-top:12px">Notes & pitfalls</h4>
+                    <p style="color:var(--muted)">Synth data required for rare layouts. Balanced sampling and focal loss improved small object recall. Use confidence thresholds per vendor for production routing.</p>
+                  </div>
+                </aside>
+              </div>
+            </details>
+          </article>
+
+          <!-- Second case -->
+          <article class="case" id="case-fin">
+            <h3>Credit Risk Model for Fintech</h3>
+            <p>Problem: Build an explainable credit risk scoring model to reduce defaults while increasing approvals.</p>
+            <div class="meta-row">
+              <span>Data: 1.2M loan records • tabular • severe class imbalance</span>
+              <span>•</span>
+              <span>Stack: XGBoost, SHAP, scikit-learn, Airflow</span>
+            </div>
+
+            <details>
+              <summary>Open full case study</summary>
+              <div class="case-grid">
+                <div>
+                  <section class="panel">
+                    <h4 style="margin-top:0">Key choices</h4>
+                    <p style="color:var(--muted)">Tried neural tabular models but prioritized explainability → XGBoost with calibrated probabilities. Engineered temporal features and cohort drift detectors.</p>
+
+                    <h4>Results</h4>
+                    <ul style="color:var(--muted)">
+                      <li>AUC-ROC: <strong>0.81</strong></li>
+                      <li>Precision@top10%: <strong>0.62</strong></li>
+                      <li>Reduced default rate by 12% in pilot</li>
+                    </ul>
+
+                    <h4>Repro</h4>
+                    <p class="mono">pip install -r requirements.txt · airflow dags trigger credit_risk_pipeline</p>
+                  </section>
+                </div>
+
+                <aside>
+                  <div class="panel">
+                    <h4 style="margin-top:0">Visualization</h4>
+                    <!-- small bar svg -->
+                    <svg viewBox="0 0 120 60" style="width:100%;height:72px" aria-hidden>
+                      <rect x="5" y="30" width="18" height="30" rx="3" fill="#38bdf8"/>
+                      <rect x="30" y="18" width="18" height="42" rx="3" fill="#60a5fa"/>
+                      <rect x="55" y="10" width="18" height="50" rx="3" fill="#7dd3fc"/>
+                      <rect x="80" y="22" width="18" height="38" rx="3" fill="#38bdf8"/>
+                    </svg>
+                    <p style="color:var(--muted);margin-top:8px">Feature importance (SHAP) used to operationalize approve/decline rules.</p>
+                  </div>
+                </aside>
+              </div>
+            </details>
+          </article>
+        </div>
+
+        <!-- side panel: quick project metrics -->
+        <aside>
+          <div class="panel" style="position:sticky;top:32px">
+            <h4 style="margin:0 0 8px">Project Snapshot</h4>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div class="metric">
+                <div style="flex:1">
+                  <div style="font-weight:700">5</div>
+                  <div style="color:var(--muted)">Major case studies</div>
+                </div>
+                <div style="width:100px;text-align:right;color:var(--muted)">Production-ready</div>
+              </div>
+
+              <div class="metric">
+                <div style="flex:1">
+                  <div style="font-weight:700">200k+</div>
+                  <div style="color:var(--muted)">Docs processed (example)</div>
+                </div>
+                <div style="width:100px;text-align:right;color:var(--muted)">Latency optimized</div>
+              </div>
+
+              <div class="metric">
+                <div style="flex:1">
+                  <div style="font-weight:700">0.93</div>
+                  <div style="color:var(--muted)">Top model F1</div>
+                </div>
+                <div style="width:100px;text-align:right;color:var(--muted)">Tested & calibrated</div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Skills & technologies -->
+    <section id="skills">
+      <h2>Skills & Technologies</h2>
+      <div class="skills">
+        <div class="skill-cat">
+          <strong>Core ML / AI</strong>
+          <ul>
+            <li>Supervised & Unsupervised Learning</li>
+            <li>Deep Learning (CV, Transformers)</li>
+            <li>NLP & Sequence Models</li>
+            <li>Model Evaluation & Uncertainty</li>
+          </ul>
+        </div>
+        <div class="skill-cat">
+          <strong>Languages & Frameworks</strong>
+          <ul>
+            <li>Python, C++, R</li>
+            <li>PyTorch, TensorFlow, scikit-learn</li>
+            <li>Pandas, NumPy, Detectron2</li>
+          </ul>
+        </div>
+        <div class="skill-cat">
+          <strong>Tools & Platforms</strong>
+          <ul>
+            <li>AWS/GCP, Docker, Kubernetes</li>
+            <li>Airflow, MLflow, Git</li>
+            <li>CI/CD for models, monitoring, drift detection</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <h2>Experience — Selected roles</h2>
+      <div class="timeline">
+        <div class="event">
+          <div class="title">Junior ML Engineer — Kolatech Startup</div>
+          <div class="meta">2022 — Present · Led credit-risk & fraud detection pipelines. Tech: XGBoost, PyTorch, Airflow, Cloud.</div>
+          <div style="color:var(--muted);margin-top:6px">Highlights: Built drift detection + model retraining schedule; integrated explainability into approval workflows.</div>
+        </div>
+
+        <div class="event">
+          <div class="title">ML Engineer — Enterprise SaaS</div>
+          <div class="meta">2020 — 2022 · Focus: Document understanding, OCR, table parsing for accounts payable automation.</div>
+        </div>
+
+        <div class="event">
+          <div class="title">Research Intern — University Lab</div>
+          <div class="meta">2019 — 2020 · Worked on segmentation and dataset curation for biomedical images.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Publications -->
+    <section id="pubs">
+      <h2>Publications & Presentations</h2>
+      <ul class="pubs">
+        <li><strong>Conference:</strong> "Transformer-based Table Parsing" — Workshop paper, 2023</li>
+        <li><strong>Talk:</strong> "Productionizing CV Models" — PyData 2024</li>
+        <li><strong>Article:</strong> "Practical OCR for Low-Resource Languages" — Medium (technical)</li>
+      </ul>
+    </section>
+
+    <!-- About & contact -->
+    <section id="contact">
+      <h2>About & Contact</h2>
+      <div style="display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap">
+        <div style="flex:1;min-width:260px">
+          <p style="margin-top:0;color:var(--muted)">I build and ship ML systems that solve domain problems — with reproducible pipelines, rigorous evaluation, and an eye for impact. I prefer lean experiments, strong baselines, and explainability when models affect people and assets.</p>
+          <p style="color:var(--muted)"><strong>Open to:</strong> Full-time ML roles, contract engagements on document understanding, risk modeling, and model deployment.</p>
+        </div>
+        <div style="width:320px">
+          <div class="panel contact">
+            <div><strong>Email</strong></div>
+            <div style="color:var(--muted)">nif.rebel@gmail.com</div>
+
+            <div style="margin-top:8px"><strong>Profiles</strong></div>
+            <div class="links">
+              <a class="chip" href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener">LinkedIn</a>
+              <a class="chip" href="https://github.com/yourname" target="_blank" rel="noopener">GitHub</a>
+            </div>
+
+            <div style="margin-top:10px"><strong>Resume</strong></div>
+            <a class="chip" href="#" aria-disabled="true">View (PDF)</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer style="color:var(--muted);padding:18px 0;text-align:center">
+      <small>© 2025 Md. Naimul Islam — Machine Learning Engineer. Site focused on technical transparency: data, methodology, metrics, and impact.</small>
+    </footer>
+  </div>
+</body>
+</html>
